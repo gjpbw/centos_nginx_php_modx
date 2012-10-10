@@ -92,11 +92,6 @@
 Устанавливаем: 
 	sudo yum install php-fpm
 
-В файле /etc/php-fpm.conf расскоментируем последнюю строчку:
-
-	include=/etc/php-fpm.d/*.conf
-
-
 создаем конфиг /etc/php-fpm.d/site1.conf:
 
     [site1]
