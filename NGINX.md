@@ -52,3 +52,38 @@
         include             /etc/nginx/conf.d/*.conf;
         include             /etc/nginx/sites-enabled/*;
     }
+    
+Стандартный конфиг сайта /etc/nginx/sites-available/site1.conf
+
+    upstream backend-site1 {server unix:/var/run/php5-site1.sock;}
+    server {
+        listen              80;
+        server_name         site1.domain.ru;
+        root                /var/www/site1/www;
+        access_log          /var/log/nginx/site1-access.log;
+        error_log           /var/log/nginx/site1-error.log;
+        index               index.php;
+        rewrite_log         on;
+        location /core/ {                                                                                                                                                                                                                               
+            deny all;                                                                                                                                                                                                                                                    
+        }
+        location / {
+            try_files       $uri $uri/ @rewrite;
+        }
+        location @rewrite {
+            rewrite         ^/(.*)$ /index.php?q=$1;
+        }
+        location ~ \.php$ {
+            include         fastcgi_params;
+            fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_pass    backend-site1;
+        }
+        location ~* ^.+\.(jpg|jpeg|gif|css|png|js|ico|bmp)$ {
+           access_log       off;
+           expires          10d;
+           break;
+        }
+        location ~ /\.ht {
+            deny            all;
+        }
+    }
