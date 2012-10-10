@@ -38,9 +38,19 @@
 Устанавливаем PHP:
 	sudo yum install php
     
+Отдельной строчкой регэкспы:
+
+	sudo yum install pcre-devel
+
+и общей кучей модули и зависимости для PHP:
+
+	sudo yum -y install aspell aspell-en aspell-ru cvs php-gd php-intl php-mbstring php-mysql php-pdo php-soap php-xml php-xmlrpc php-pspell php-devel php-pear
+    
 Настраиваем (редактируем /etc/php.ini):
     post_max_size = 100M
     upload_max_filesize = 100M
     disable_functions = exec,passthru,shell_exec,system,proc_open,popen,curl_multi_exec,parse_ini_file,show_source
     cgi.fix_pathinfo = 0
     open_basedir = /var/www/
+    
+    date.timezone = Europe/Moscow
