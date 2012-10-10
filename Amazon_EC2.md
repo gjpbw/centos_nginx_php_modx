@@ -9,6 +9,12 @@
 Создадим пользовательскую группу www:
 	sudo groupadd www
 
+Создаем нужные каталоги:
+	mkdir /var/www
+	mkdir /var/www/site1
+	mkdir /var/www/site1/www
+	mkdir /var/www/site1/tmp
+    
 Добавляем пользователей (удобно, когда имя пользователя совпадаем с именем сайта. Например для сайта www.yandex.ru создаем пользователя yandex):
 	sudo useradd site1 -g www -d /var/www/site1
 
@@ -19,21 +25,15 @@
 	sudo chown site1:www /var/www/site1
 	sudo chmod 0750 /var/www/site1
 
-Создаем нужные каталоги:
-	mkdir /var/www
-	mkdir /var/www/site1
-	mkdir /var/www/site1/www
-	mkdir /var/www/site1/tmp
-
 Повторяем все шаги для второго сайта (при необходимости для третьего, четвертого и т.д.)
-    sudo useradd site2 -g www -d /var/www/site2
-    sudo passwd site2
-    sudo chown site2:www /var/www/site2
-    sudo chmod 0750 /var/www/site2
-	mkdir /var/www
 	mkdir /var/www/site2
 	mkdir /var/www/site2/www
 	mkdir /var/www/site2/tmp
+	sudo useradd site2 -g www -d /var/www/site2
+    sudo passwd site2
+    sudo chown site2:www /var/www/site2
+    sudo chmod 0750 /var/www/site2
+
     
 Устанавливаем PHP:
 	sudo yum install php
