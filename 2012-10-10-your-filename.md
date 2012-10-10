@@ -67,3 +67,4 @@
 >	mkdir /var/www/site1/www
 
 >	mkdir /var/www/site1/tmp
+
