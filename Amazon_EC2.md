@@ -50,10 +50,48 @@
     
     date.timezone = Europe/Moscow
     
-    
-Ставим MySQL
-	yum install mysql-server
-	yum install mysql
-	
 Установка нужных пакетов
 	yum install unzip zip sendmail htop
+	
+Установим MySQL:
+
+sudo yum install mysql-server mysql
+
+Добавим его в автозапуск:
+
+sudo /sbin/chkconfig --levels 235 mysqld on
+
+и запустим:
+
+sudo service mysqld start
+
+
+После этого зададим пароль пользователю root:
+
+mysql -u root
+
+
+USE mysql
+
+не забудьте вписать что-то свое вместо s10ZniYpar00L
+
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('s10ZniYpar00L');
+
+Запретим подключение к базе без пароля:
+
+DELETE FROM user WHERE password = '';
+
+
+DELETE FROM user WHERE user.user= '';
+
+и обновим привилегии:
+
+FLUSH PRIVILEGES;
+
+Удалим тестовую базу:
+
+DROP DATABASE test;
+
+и выйдем из консоли управления MySQL сервером:
+
+\q	
