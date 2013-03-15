@@ -49,3 +49,11 @@
     open_basedir = /var/www/
     
     date.timezone = Europe/Moscow
+    
+    
+Ставим MySQL
+	yum install mysql-server
+	yum install mysql
+	
+Установка нужных пакетов
+	yum install unzip zip sendmail htop
