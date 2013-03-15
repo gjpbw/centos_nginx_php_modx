@@ -55,11 +55,11 @@
     
 Стандартный конфиг сайта /etc/nginx/sites-available/site1.conf
 
-    upstream backend-site1 {server unix:/var/run/php5-site1.ru.sock;}
+    upstream backend-site1 {server unix:/var/run/php5-site1.sock;}
     server {
         listen              80;
         server_name         site1.ru;
-        root                /var/www/site1.ru/www;
+        root                /var/www/site1/www;
         access_log          /var/log/nginx/site1-access.log;
         error_log           /var/log/nginx/site1-error.log;
         index               index.php;
@@ -95,13 +95,13 @@
 создаем конфиг /etc/php-fpm.d/site1.conf:
 
     [site1]
-    listen = /var/run/php5-site1.ru.sock
+    listen = /var/run/php5-site1.sock
     listen.mode = 0666
     user = site1
     group = site1
-    chdir = /var/www/site1.ru
-    php_admin_value[upload_tmp_dir] = /var/www/site1.ru/tmp
-    php_admin_value[soap.wsdl_cache_dir] = /var/www/site1.ru/tmp
+    chdir = /var/www/site1
+    php_admin_value[upload_tmp_dir] = /var/www/site1/tmp
+    php_admin_value[soap.wsdl_cache_dir] = /var/www/site1/tmp
     php_admin_value[date.timezone] = Europe/Moscow
     # тут значения можно поменять, в зависимости от нагрузки на сайт
     pm = dynamic
