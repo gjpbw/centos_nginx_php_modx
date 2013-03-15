@@ -1,22 +1,28 @@
 #Настройка Amazon EC2
 
 Обновляемся:
+
 	sudo yum -y update
 
 Устанавливаем Миднайт Командер:
+
 	sudo yum install mc
 
 Создадим пользовательскую группу www:
+
 	sudo groupadd site1
     
 Добавляем пользователей (удобно, когда имя пользователя совпадаем с именем сайта. Например для сайта www.yandex.ru создаем пользователя yandex):
+
 	sudo useradd site1 -g site1 -d /var/www/site1
 	
 Создаем нужные каталоги:
+
 	mkdir /var/www/site1/www
 	mkdir /var/www/site1/tmp
 
 Задаем пароли:
+
 	sudo passwd site1
 
 Повторяем все шаги для второго сайта (при необходимости для третьего, четвертого и т.д.)
