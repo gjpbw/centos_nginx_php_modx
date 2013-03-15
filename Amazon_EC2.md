@@ -30,11 +30,9 @@
 	sudo yum install php
     
 Отдельной строчкой регэкспы:
-
 	sudo yum install pcre-devel
 
 и общей кучей модули и зависимости для PHP:
-
 	sudo yum -y install aspell aspell-en aspell-ru cvs php-gd php-intl php-mbstring php-mysql php-pdo php-soap php-xml php-xmlrpc php-pspell php-devel php-pear
     
 Настраиваем (редактируем /etc/php.ini):
@@ -54,44 +52,30 @@
 	yum install unzip zip sendmail htop
 	
 Установим MySQL:
-
-sudo yum install mysql-server mysql
+	sudo yum install mysql-server mysql
 
 Добавим его в автозапуск:
-
-sudo /sbin/chkconfig --levels 235 mysqld on
+	sudo /sbin/chkconfig --levels 235 mysqld on
 
 и запустим:
-
-sudo service mysqld start
-
+	sudo service mysqld start
 
 После этого зададим пароль пользователю root:
-
-mysql -u root
-
-
-USE mysql
+	mysql -u root
+	USE mysql
 
 не забудьте вписать что-то свое вместо s10ZniYpar00L
-
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('s10ZniYpar00L');
+	SET PASSWORD FOR 'root'@'localhost' = PASSWORD('s10ZniYpar00L');
 
 Запретим подключение к базе без пароля:
-
-DELETE FROM user WHERE password = '';
-
-
-DELETE FROM user WHERE user.user= '';
+	DELETE FROM user WHERE password = '';
+	DELETE FROM user WHERE user.user= '';
 
 и обновим привилегии:
-
-FLUSH PRIVILEGES;
+	FLUSH PRIVILEGES;
 
 Удалим тестовую базу:
-
-DROP DATABASE test;
+	DROP DATABASE test;
 
 и выйдем из консоли управления MySQL сервером:
-
-\q	
+	\q	
