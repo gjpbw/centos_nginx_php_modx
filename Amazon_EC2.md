@@ -93,4 +93,24 @@
 
 и выйдем из консоли управления MySQL сервером:
 
-	\q	
+	\q
+
+Создаем группу sftp
+
+	groupadd --system sftp
+	
+Добавляем в конец /etc/ssh/sshd_config
+
+	Subsystem sftp internal-sftp
+	Match Group sftp
+	ChrootDirectory %h
+	AllowTCPForwarding no
+	ForceCommand internal-sftp
+
+И комментируем там же
+
+	#Subsystem sftp /usr/lib/openssh/sftp-server
+
+перезапускаем sshd
+
+	service sshd restart
