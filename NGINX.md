@@ -91,6 +91,10 @@
     
 Устанавливаем: 
 	sudo yum install php-fpm
+	
+Добавляем nginx в автозагрузку:
+
+	chkconfig --levels 235 php-fpm on
 
 создаем конфиг /etc/php-fpm.d/site1.conf:
 
