@@ -1,0 +1,52 @@
+1. Поставить кодеки G.723 и G.729
+    1. Заходим по ssh на сервер с Elastix, в коммандной строке входим в CLI астериска, asterisk -rvvv и энтер, и вводим core show translation и энтер. Видим что на против кодека п729 стоят прочерки. Это говорит что он работает только в режиме passtrough. Выходим в командную строку по exit.
+    
+    2. Посещаем сайт http://asterisk.hosting.lv/ и выбираем нужную версию кодека. 
+    Я для XEON E3 под ESXi скачивал
+    codec_g723-ast18-gcc4-glibc-core2-sse4.so
+    codec_g729-ast18-gcc4-glibc-core2-sse4.so
+    обращаем внимание на то версия у нас 32 или 64битная
+    Скачиваем подходящие модули и переименовываем их в codec_g723.so и codec_g729.so
+    
+    3. Копируем на сервер используя WinSCP в папку cd /usr/lib/asterisk/modules/
+    и Выставляем права на них как у остальных файлов в это   папке
+   
+    4. Презапускаем астериск, набирая в косоли: asterisk -rx "core restart when convenient"
+    Теперь если в CLI набрать core show translation, то на против кодека g729 не будут прочерки. Если по прежнему прочерки, то попробуйте выбрать другую версию модуля.
+
+2. Копируем файлы с русскими звуками в /var/lib/asterisk/sounds/ru
+  Если есть совпадения то замещаем старые файлы новыми
+  
+  В файле sip_general_custom.conf добавляем строчку
+  language=ru
+  
+3. В файле extensions_custom.conf добавляемт строки после include => weather-wakeup, должно получмится:
+[from-internal-custom]  			
+exten => 1234,1,Playback(demo-congrats)		; extensions can dial 1234
+exten => 1234,2,Hangup()
+exten => h,1,Hangup()
+include => agentlogin
+include => conferences
+include => calendar-event
+include => weather-wakeup
+include => short-number
+
+[short-number]
+exten => _[01][23]XX,1,NoOp(dialed ${EXTEN})
+; задаем переменную для хранения номера
+; с именем NUMBER_TO_DIAL
+; из базы
+exten => _[01][23]XX,n,Set(NUMBER_TO_DIAL=${SHELL(php /tmp/VoIP/get_short_number.php -n${EXTEN} -d7 -s7812)})
+; если мы получили пустой номер - сообщаем, что номер не существует
+exten => _[01][23]XX,n,GotoIf($["${NUMBER_TO_DIAL}" = ""]?number_exists)
+; иначе - набираем.
+exten => _[01][23]XX,n,Dial(SIP/zadarma-39028/${NUMBER_TO_DIAL})
+exten => _[01][23]XX,n,Dial(SIP/zadarma/${NUMBER_TO_DIAL})
+exten => _[01][23]XX,n,Hangup();
+; обработка ошибок неверный номер
+exten => _[01][23]XX,n(number_exists),Playback(incorect-number)
+exten => _[01][23]XX,n(number_exists),Hangup();
+
+дальше оставляем все как и было
+
+Копируем файлы /tmp/VoIP/get_short_number.php
