@@ -50,3 +50,25 @@ exten => _[01][23]XX,n(number_exists),Hangup();
 дальше оставляем все как и было
 
 Копируем файлы /tmp/VoIP/get_short_number.php
+
+
+
+4. Настройка доступа к AMI
+ manager.conf:
+ 
+[general]
+enabled=yes                ; возможность работать с AMI (по-умолчанию no)
+port=5038                  ; на порту TCP 5038
+bindaddr = 0.0.0.0         ; принимать соединения в лок. сети (0.0.0.0 - все)
+timestampevents = no       ; Отправлять в пакетах событий временную метку
+displayconnects = yes      ; Отображать факт подключения пользователя к AMI
+allowmultiplelogin = yes   ; Разрешить несколько подключений с одним именем
+
+manager_custom.conf:
+
+[crm]
+secret = <ПАРОЛЬ>
+deny=0.0.0.0/0.0.0.0
+permit=192.168.3.1/255.255.255.0           ; принимать соединения с хоста
+read = system,call,log,verbose,command,agent,user,config,command,dtmf,reporting,cdr,dialplan,originate
+write = system,call,log,verbose,command,agent,user,config,command,dtmf,reporting,cdr,dialplan,originate
