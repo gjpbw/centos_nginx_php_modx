@@ -118,3 +118,14 @@
 
     service nginx restart
     service php-fpm restart
+    
+
+Устанавливаем акселератор APC:
+
+    yum install php-pecl-apc
+
+После установки APC нужно подключить его в php.ini, добавив строку "extension=apc.so".
+Перезапускаем сервисы:
+
+    service nginx restart
+    service php-fpm restart
