@@ -1,5 +1,5 @@
-1. Качаем нужную версию для сервера.
-    
+Качаем нужную версию для сервера.
+
     wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86"  
     или  
     wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86_64"
@@ -14,13 +14,13 @@
 
 i686 — это 32 битная ОС.
 
-2. Распаковываем
+Распаковываем
 
     tar -xzvf dropbox.tar.gz
 
-3. Запускаем
+Запускаем
 
-    ~/.dropbox-dist/dropboxd
+	~/.dropbox-dist/dropboxd
 
 В первый раз он выведет ссылку на сервис, которую вам надо открыть у себя на компе и добавить этот сервер в число компьютеров аккаунта.
 
