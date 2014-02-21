@@ -1,25 +1,26 @@
 1. Качаем нужную версию для сервера.
 
-    wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86" или
+    wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86"  
+    или  
     wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86_64"
 
 Если не знаете, что у вас за ОС, выполните команду
 
-uname -a
+    uname -a
 
 У меня вот такой вывод:
 
-Linux bezumkin 3.1.0-1.2-xen #1 SMP Wed Dec 7 19:01:22 MSK 2011 i686 GNU/Linux
+    Linux bezumkin 3.1.0-1.2-xen #1 SMP Wed Dec 7 19:01:22 MSK 2011 i686 GNU/Linux
 
 i686 — это 32 битная ОС.
 
 2. Распаковываем
 
-tar -xzvf dropbox.tar.gz
+    tar -xzvf dropbox.tar.gz
 
 3. Запускаем
 
-~/.dropbox-dist/dropboxd
+    ~/.dropbox-dist/dropboxd
 
 В первый раз он выведет ссылку на сервис, которую вам надо открыть у себя на компе и добавить этот сервер в число компьютеров аккаунта.
 
@@ -29,3 +30,4 @@ tar -xzvf dropbox.tar.gz
 //т.к. по ссылки выше для Ubuntu, а  у нас CentOS то остальное отличается:
 
 Создаем файл /etc/init.d/dropbox с содержимым:
+
