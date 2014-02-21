@@ -125,4 +125,17 @@ i686 — это 32 битная ОС.
 	esac
 	exit $RETVAL
 
+Создаем файл /etc/sysconfig/dropbox с содержимым:
 
+	DROPBOX_USERS="linux_user_name"
+	linux_user_name=имя пользователя linux под кем запускается dropbox
+
+Изменяем права на файл:
+
+	chmod +x /etc/init.d/dropbox
+	chkconfig --add dropbox
+	chmod 755 /etc/init.d/dropbox
+
+Добавляем в автозапуск	
+	
+	chkconfig dropbox on
