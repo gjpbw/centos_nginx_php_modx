@@ -1,7 +1,7 @@
 1. Качаем нужную версию для сервера.
 
-wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86" или
-wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86_64"
+  wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86" или
+  wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86_64"
 
 Если не знаете, что у вас за ОС, выполните команду
 
