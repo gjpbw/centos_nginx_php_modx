@@ -113,13 +113,16 @@
     pm.start_servers = 2
     pm.min_spare_servers = 2
     pm.max_spare_servers = 4
+
+Для защиты от взлома добавляем в /etc/nginx/fastcgi_params строку
+
+    fastcgi_param HTTP_HOST $host;
     
 Перезапускаем сервисы:
 
     service nginx restart
     service php-fpm restart
     
-
 Устанавливаем акселератор APC:
 
     yum install php-pecl-apc
