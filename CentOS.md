@@ -24,7 +24,7 @@
 
 	post_max_size = 100M
 	upload_max_filesize = 100M
-	disable_functions = exec,passthru,shell_exec,system,proc_open,popen,curl_multi_exec,parse_ini_file,show_source
+	disable_functions = exec,passthru,shell_exec,system,proc_open,popen,curl_multi_exec,show_source
 	cgi.fix_pathinfo = 0
 	open_basedir = /var/www/
 	date.timezone = Europe/Moscow
