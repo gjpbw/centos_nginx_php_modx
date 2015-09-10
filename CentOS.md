@@ -28,6 +28,8 @@
 	cgi.fix_pathinfo = 0
 	open_basedir = /var/www/
 	date.timezone = Europe/Moscow
+	session.save_path = "/var/lib/php/session"
+
     
 Установка нужных пакетов
 
