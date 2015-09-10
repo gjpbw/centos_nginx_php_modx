@@ -50,7 +50,7 @@
         gzip_comp_level     8;
         charset             utf-8;
         include             /etc/nginx/conf.d/*.conf;
-        include             /etc/nginx/sites-enabled/*;
+        include             /etc/nginx/www/*;
     }
     
 Стандартный конфиг сайта /etc/nginx/sites-available/site1.conf
