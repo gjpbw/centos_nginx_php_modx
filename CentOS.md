@@ -18,7 +18,7 @@
 
 и общей кучей модули и зависимости для PHP:
 
-	sudo yum -y install aspell aspell-en aspell-ru cvs php-gd php-intl php-mbstring php-mysql php-pdo php-soap php-xml php-xmlrpc php-pspell php-devel php-pear
+	sudo yum -y install cvs php-gd php-intl php-mbstring php-mysql php-pdo php-soap php-xml php-xmlrpc php-pspell php-devel php-pear
     
 Настраиваем (редактируем /etc/php.ini):
 
