@@ -5,5 +5,6 @@
 	systemctl start rpcbind
 
 Примеры записи в файле /etc/fstab
-	192.168.9.15:/mnt/RAID/qqq.ru       /var/www/qqq/www/ext    nfs     noexec,rw,auto  0 0
-	192.168.9.5:/mnt/Data/system        /var/www/www.system/www nfs     noexec,ro,auto  0 0
+
+	192.168.9.15:/mnt/RAID/qqq.ru       /var/www/qqq/www/ext    nfs     noexec,rw,auto  0 0  
+	192.168.9.5:/mnt/Data/system        /var/www/www.system/www nfs     noexec,ro,auto  0 0  
