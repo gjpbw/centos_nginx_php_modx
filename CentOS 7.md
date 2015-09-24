@@ -1,5 +1,7 @@
-yum update
-yum -y install mc
+Сразу после установки:	
+	
+	yum update  
+	yum -y install mc  
 
 
 Установка MariaDB (используется вместо MySQL)
