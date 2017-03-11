@@ -10,7 +10,7 @@
 
 У меня вот такой вывод:
 
-    Linux bezumkin 3.1.0-1.2-xen #1 SMP Wed Dec 7 19:01:22 MSK 2011 i686 GNU/Linux
+    Linux dev 2.6.32-642.15.1.el6.x86_64 #1 SMP Fri Feb 24 14:31:22 UTC 2017 x86_64
 
 i686 — это 32 битная ОС.
 
